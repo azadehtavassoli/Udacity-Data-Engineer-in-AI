@@ -1,0 +1,36 @@
+gRPC:
+
+
+The location messageis defined asfollows( it is defined in .proto file):
+
+message LocationMessage {
+    int32 person_id = 1;
+    string latitude = 20;
+    string longitude = 30;
+}
+
+So, the payload lokks like this: 
+{
+    "person_id" = 1;
+    "latitude" = "20.7545";
+    "longitude" = "30.7545";
+}
+
+
+grpc_client.py is written as a sample client to send loacation.
+
+The following instruction will run gRPC and creates data:
+
+kubectl exec -it <location-generator-pod-name> sh
+in my case:
+kubectl exec -it udaconnect-location-generator-service-85f6f79bb-6vp2t sh
+  
+Then, when we are in sh mode, we can run the following command to create random data for different people.
+
+
+python grpc_client.py
+
+
+( It can be executed several times!)
+
+A screenshot of running these commands are provided in docs folder(grpc test sample.png)

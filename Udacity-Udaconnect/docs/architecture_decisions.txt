@@ -1,0 +1,23 @@
+Architecture decision making:
+
+Connection API (REST API):
+The microservice is created without any change.
+
+Frontend (REST API):
+No change has been applied.
+
+Person API (REST API):
+The microservice is created without any change.
+
+Location microservice (REST API):
+The new architecture supports loading location from database.
+
+Location generator (gRPC + Message Queue (Kafka)):
+Loading location data is expected to have the ability of handling the large volume and streaming data while the location generator is relatively simple. The microservice, which uses
+this location is smart and should recieve lossless messages. 
+Hence, the Kafaka is the way forwad and the consumer queries the data from kafka and it handels is without any missing data.
+Finally, the loading new location in the new architecture is done using gRPC (compared to REST, gRPC provides better performance) and Kafka which is more reliable at large volume of data.
+
+
+
+
